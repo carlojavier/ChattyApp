@@ -1,5 +1,5 @@
 {
-  "name": "Chatty App",
+  "name": "ChattyApp",
   "version": "1.0.0",
   "description": "Just another reason to not talk to people in person",
   "scripts": {
@@ -22,7 +22,7 @@
   "author": "Carlo Javier",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/carlojavier/react-simple-boilerplate"
   },
   "homepage": "https://github.com/carlojavier/react-simple-boilerplate",
   "engines": {
