@@ -27,7 +27,7 @@ class App extends Component {
 
   sendMessage(newMessage) {
     const messages = this.state.messages.concat(newMessage)
-    this.setState({ messages: messages })
+    this.setState({ currentUser: {name: newMessage.username}, messages: messages } )
     console.log(newMessage)
   }
 
@@ -42,6 +42,12 @@ class App extends Component {
       // Calling setState will trigger a call to render() in App and all child components.
       this.setState({messages: messages})
     }, 3000);
+    // Connect SOCKET
+    const chattyServerLink = new WebSocket('ws://localhost:3001');
+    this.setState({ chattyServer: chattyServerLink })
+    chattyServerLink.onopen = (event) => {
+      console.log('connected to server');
+    }
   }
   render() {  
     return (
