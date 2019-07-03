@@ -8,7 +8,7 @@ class App extends Component {
     super();
 
     this.state = {
-      currentUser: {name: 'Bob'},
+      currentUser: {name: 'Nick'},
       messages: [
         {
           id: 1,
@@ -28,6 +28,7 @@ class App extends Component {
   sendMessage(newMessage) {
     const messages = this.state.messages.concat(newMessage)
     this.setState({ currentUser: {name: newMessage.username}, messages: messages } )
+    this.chattyServerLink.send(JSON.stringify(newMessage));
     console.log(newMessage)
   }
 
@@ -43,9 +44,9 @@ class App extends Component {
       this.setState({messages: messages})
     }, 3000);
     // Connect SOCKET
-    const chattyServerLink = new WebSocket('ws://localhost:3001');
+    this.chattyServerLink = new WebSocket('ws://localhost:3001');
     this.setState({ chattyServer: chattyServerLink })
-    chattyServerLink.onopen = (event) => {
+    this.chattyServerLink.onopen = (event) => {
       console.log('connected to server');
     }
   }

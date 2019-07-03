@@ -13,7 +13,7 @@ export default class ChatBar extends Component {
     }
 
     showUser(event) {
-        this.setState({ userName: event.target.defaultValue})
+        this.setState({ userName: event.target.defaultValue })
     }
 
     newMessage(event) {
