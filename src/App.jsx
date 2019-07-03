@@ -12,16 +12,17 @@ class App extends Component {
       messages: [
         {
           id: 1,
-          username: 'Bob',
-          content: 'Has anyone seen my marbles?',
+          username: 'Travis',
+          content: 'Yo, you wanna buy some microgreens?',
         },
         {
           id: 2,
-          username: 'Anonynomous',
-          content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.'
+          username: 'Nima',
+          content: 'Yeah sure man!'
         }
       ]
     }
+    this.postNewMessage = this.postNewMessage.bind(this);
   }
 
   componentDidMount() {
@@ -29,12 +30,16 @@ class App extends Component {
     setTimeout(() => {
       console.log('Simulating incoming message');
       // Add a new message to the list of messages in the data store
-      const newMessage = {id: 3, username: 'Carlo', content: 'Hey.. I need help'};
+      const newMessage = {id: 3, username: 'Carlo', content: 'Hey... I need help'};
       const messages = this.state.messages.concat(newMessage)
       // Update the state of the app component.
       // Calling setState will trigger a call to render() in App and all child components.
       this.setState({messages: messages})
     }, 3000);
+  }
+  postNewMessage(message) {
+    const addMessage = this.state.messages.concat(message);
+    this.setState({messages: addMessage})
   }
 
   render() {  
