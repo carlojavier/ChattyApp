@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Message from './Message.jsx';
 
 function MessageList(props) {
-    const messages = props.messages.map(message => {
+    const messages = props.messages.map((message) => {
         return (
             <Message
                 key={message.id}

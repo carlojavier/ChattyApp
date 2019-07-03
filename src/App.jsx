@@ -21,7 +21,7 @@ class App extends Component {
           content: 'Yeah sure man!'
         }
       ]
-    }
+    };
     this.sendMessage = this.sendMessage.bind(this);
   }
 
@@ -32,9 +32,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // console.log('componentDidMount <App />');
+    console.log('componentDidMount <App />');
     setTimeout(() => {
-      // console.log('Simulating incoming message');
+      console.log('Simulating incoming message');
       // Add a new message to the list of messages in the data store
       const newMessage = {id: 3, username: 'Carlo', content: 'Hey... I need help'};
       const messages = this.state.messages.concat(newMessage)
