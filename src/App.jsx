@@ -15,8 +15,6 @@ class App extends Component {
   }
 
   sendMessage(newMessage) {
-    const messages = this.state.messages.concat(newMessage)
-    this.setState({ currentUser: {name: newMessage.username}, messages: messages } )
     this.chattyServerLink.send(JSON.stringify(newMessage));
     console.log(newMessage)
   }
