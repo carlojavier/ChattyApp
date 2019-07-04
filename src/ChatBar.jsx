@@ -4,7 +4,8 @@ export default class ChatBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: props.currentUser,
+            type: postMessage,
+            userName: '',
             message: '',
 
         };
