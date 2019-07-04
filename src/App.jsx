@@ -8,19 +8,8 @@ class App extends Component {
     super();
 
     this.state = {
-      currentUser: {name: 'Nick'},
-      messages: [
-        {
-          id: 1,
-          username: 'Travis',
-          content: 'Yo, you wanna buy some microgreens?',
-        },
-        {
-          id: 2,
-          username: 'Nima',
-          content: 'Yeah sure man!'
-        }
-      ]
+      currentUser: {name: 'Your Conscience'},
+      messages: []
     };
     this.sendMessage = this.sendMessage.bind(this);
   }
@@ -43,11 +32,16 @@ class App extends Component {
       // Calling setState will trigger a call to render() in App and all child components.
       this.setState({messages: messages})
     }, 3000);
-    // Connect SOCKET
+    // Connect socket
     this.chattyServerLink = new WebSocket('ws://localhost:3001');
-    this.setState({ chattyServer: chattyServerLink })
+    this.setState({ chattyServer: this.chattyServerLink })
     this.chattyServerLink.onopen = (event) => {
       console.log('connected to server');
+    }
+    this.chattyServerLink.onmessage = event => {
+      const message = JSON.parse(event.data);
+      const messages = this.state.messages.concat(message)
+      this.setState({ messages: messages });
     }
   }
   render() {  
