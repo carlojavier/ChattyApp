@@ -27,7 +27,6 @@ wss.on('connection', (ChattyServerLink) => {
     msg.id = uuidv4();
     wss.clients.forEach((client) => {
       if(client.readyState === SocketConnector.OPEN) {
-        console.log(msg)
         client.send(JSON.stringify(msg))
       }
     })
