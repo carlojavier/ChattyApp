@@ -25,6 +25,16 @@ wss.on('connection', (ChattyServerLink) => {
   ChattyServerLink.on('message', (message) => {
     let msg = JSON.parse(message)
     msg.id = uuidv4();
+
+    switch(msg.type) {
+      case 'postMessage':
+        msg.type = 'incomingMessage'
+      break;
+      case 'postNotification':
+        msg.type = 'incomingNotification';
+      break;
+    }
+    
     wss.clients.forEach((client) => {
       if(client.readyState === SocketConnector.OPEN) {
         client.send(JSON.stringify(msg))

@@ -36,7 +36,7 @@ export default class ChatBar extends Component {
                 return;
             }
             const newMessage = {
-                'type': 'incomingMessage',
+                'type': 'postMessage',
                 'username': this.state.userName,
                 'content': this.state.message
             }
