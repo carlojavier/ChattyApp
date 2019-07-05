@@ -8,6 +8,7 @@ function MessageList(props) {
                 type={message.type}
                 key={message.id}
                 username={message.username}
+                oldusername={message.oldusername}
                 content={message.content} />
         );
     });

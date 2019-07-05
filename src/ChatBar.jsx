@@ -5,7 +5,7 @@ export default class ChatBar extends Component {
         super(props);
         this.state = {
             type: postMessage,
-            userName: '',
+            userName: 'Anonymous',
             message: '',
             notification: ''
 
@@ -27,11 +27,9 @@ export default class ChatBar extends Component {
     }
 
     changeUserName(event) {
-        this.setState({
-            userName: event.target.value
-        })
-    }
 
+    }
+    
     postMessage(event) {
         if (event.key === 'Enter') {
             const newMessage = {
@@ -47,22 +45,24 @@ export default class ChatBar extends Component {
             this.props.sendMessage(newMessage);
         }
     }
-
+    
     postNotification(event) {
-        if (event.key === 'Enter') {
-            const notification = {
-                'id': this.state.id,
-                'username': this.state.userName,
-                'type': 'postNotification'
-            };
-            this.props.postNotification(notification);
-        }
+        const notification = {
+            'id': this.state.id,
+            'oldusername': this.state.userName,
+            'username': event.target.value,
+            'type': 'postNotification'
+        };
+        this.props.postNotification(notification);
+        this.setState({
+            userName: event.target.value
+        })
     }
 
     render() {
         return (
             <footer className="chatbar">
-                <input className="chatbar-username" defaultValue={this.state.userName} onChange={this.changeUserName} onKeyPress={this.postNotification} placeholder="Who are you?" />
+                <input className="chatbar-username" defaultValue={this.state.userName} onBlur={this.postNotification} placeholder="Who are you?" />
                 <input className="chatbar-message" value={this.props.message} onChange={this.newMessage} onKeyPress={this.postMessage} placeholder="What do you want to say?" />
             </footer>
         );

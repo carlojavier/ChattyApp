@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function Message({ type, username, content }) {
+function Message({ type, username, content, oldusername }) {
     if (type === 'incomingMessage') {
     return (
         <div className="message">
@@ -11,7 +11,7 @@ function Message({ type, username, content }) {
     } else if (type === 'incomingNotification') {
         return (
             <div className="notification">
-                <span className='notificationContent'>{username} changed their name to {username}</span>
+                <span className='notificationContent'>{oldusername} changed their name to {username}</span>
             </div>
 
         );   
