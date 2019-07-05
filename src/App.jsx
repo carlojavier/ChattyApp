@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: { name: '' },
-      messages: []
+      messages: [],
+      clients: 0
     };
     this.sendMessage = this.sendMessage.bind(this);
     this.postNotification = this.postNotification.bind(this);
@@ -44,6 +45,13 @@ class App extends Component {
   postNotification(newNotification) {
     this.chattyServerLink.send(JSON.stringify(newNotification));
   }
+
+  numberOfUsers(clients) {
+    this.setState({ numberOfUsers: clients });
+  }
+
+
+
 
   render() {
     return (

@@ -7,6 +7,7 @@ export default class ChatBar extends Component {
             type: postMessage,
             userName: '',
             message: '',
+            notification: ''
 
         };
         this.showUser = this.showUser.bind(this);
