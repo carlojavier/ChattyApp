@@ -11,6 +11,7 @@ class App extends Component {
       messages: []
     };
     this.sendMessage = this.sendMessage.bind(this);
+    this.postNotification = this.postNotification.bind(this);
   }
 
   componentDidMount() {
@@ -39,12 +40,17 @@ class App extends Component {
     const messages = this.state.messages.concat(message)
     this.setState({ messages: messages });
   }
+
+  postNotification(newNotification) {
+    this.chattyServerLink.send(JSON.stringify(newNotification));
+  }
+
   render() {
     return (
       <div>
         <NavBar />
         <MessageList messages={this.state.messages} />
-        <ChatBar currentUser={this.state.currentUser.name} sendMessage={this.sendMessage} />
+        <ChatBar currentUser={this.state.currentUser.name} sendMessage={this.sendMessage} postNotification={this.postNotification} />
       </div>
     );
   }

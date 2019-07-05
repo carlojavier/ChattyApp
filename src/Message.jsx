@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 
-function Message(props) {
+function Message({ type, username, content }) {
+    if (type === 'incomingMessage') {
     return (
-        <div>
         <div className="message">
-            <span className="message-username">{props.username}</span>
-            <span className="message-content">{props.content}</span>
+            <span className="message-username">{username}</span>
+            <span className="message-content">{content}</span>
         </div>
-         <div className="message system">
-        </div>
-        </div>
-    );
+        )
+    } else if (type === 'incomingNotification') {
+        return (
+            <div className="notification">
+                <span className='notificationContent'>{username} changed their name to {username}</span>
+            </div>
+
+        );   
+}
+return null;
+
 }
 
 export default Message;

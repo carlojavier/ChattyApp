@@ -10,9 +10,10 @@ export default class ChatBar extends Component {
 
         };
         this.showUser = this.showUser.bind(this);
-        this.checkKeyPress = this.checkKeyPress.bind(this);
         this.newMessage = this.newMessage.bind(this);
         this.changeUserName = this.changeUserName.bind(this);
+        this.postMessage = this.postMessage.bind(this);
+        this.postNotification = this.postNotification.bind(this);
 
     }
 
@@ -30,17 +31,15 @@ export default class ChatBar extends Component {
         })
     }
 
-    checkKeyPress(event) {
+    postMessage(event) {
         if (event.key === 'Enter') {
-            if (this.state.message.length < 1) {
-                return;
-            }
             const newMessage = {
+                'id': this.state.id,
                 'type': 'postMessage',
                 'username': this.state.userName,
                 'content': this.state.message
-            }
-
+            };
+            event.target.value = '',
             this.setState({
                 message: ''
             });
@@ -48,11 +47,22 @@ export default class ChatBar extends Component {
         }
     }
 
+    postNotification(event) {
+        if (event.key === 'Enter') {
+            const notification = {
+                'id': this.state.id,
+                'username': this.state.userName,
+                'type': 'postNotification'
+            };
+            this.props.postNotification(notification);
+        }
+    }
+
     render() {
         return (
             <footer className="chatbar">
-                <input className="chatbar-username" defaultValue={this.state.userName} onChange={this.changeUserName} placeholder="Who are you?" />
-                <input className="chatbar-message" value={this.props.message} onChange={this.newMessage} onKeyPress={this.checkKeyPress} placeholder="What do you want to say?" />
+                <input className="chatbar-username" defaultValue={this.state.userName} onChange={this.changeUserName} onKeyPress={this.postNotification} placeholder="Who are you?" />
+                <input className="chatbar-message" value={this.props.message} onChange={this.newMessage} onKeyPress={this.postMessage} placeholder="What do you want to say?" />
             </footer>
         );
     }
