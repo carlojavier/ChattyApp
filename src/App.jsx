@@ -56,8 +56,7 @@ class App extends Component {
   }
 
   numberOfUsers(clients) {
-    this.setState({ numberOfUsers: clients });
-    console.log(this.state.numberOfUsers);
+    this.setState({ clients: clients });
   }
 
 
@@ -65,7 +64,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar  />
+        <NavBar numberOfUsers={this.state.clients} />
         <MessageList messages={this.state.messages} />
         <ChatBar currentUser={this.state.currentUser.name} sendMessage={this.sendMessage} postNotification={this.postNotification} />
       </div>

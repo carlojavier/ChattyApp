@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class NavBar extends Component {
     render() {
+        console.log(this.props)
         return (
             <nav className="navbar">
                 <a href="/" className="navbar-brand">Chatty</a>
-                <span className="users-counter">Friends online:{ this.props.clients }</span>
+                <span className="userCounter">Friends online:{ this.props.numberOfUsers }</span>
             </nav>
         );
     }
