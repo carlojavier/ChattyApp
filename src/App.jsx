@@ -26,8 +26,17 @@ class App extends Component {
       const msg = JSON.parse(event.data);
       switch (msg.type) {
         case 'incomingMessage':
+          this.addMessages(msg);
+
+          break;
+
         case 'incomingNotification':
           this.addMessages(msg);
+          break;
+
+        case 'clients':
+          this.numberOfUsers(msg.numberOfUsers)
+
           break;
       }
     }
@@ -48,6 +57,7 @@ class App extends Component {
 
   numberOfUsers(clients) {
     this.setState({ numberOfUsers: clients });
+    console.log(this.state.numberOfUsers);
   }
 
 
@@ -55,7 +65,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar  />
         <MessageList messages={this.state.messages} />
         <ChatBar currentUser={this.state.currentUser.name} sendMessage={this.sendMessage} postNotification={this.postNotification} />
       </div>

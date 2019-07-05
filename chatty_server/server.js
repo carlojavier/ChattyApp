@@ -16,6 +16,17 @@ const wss = new SocketServer({ server });
 
 wss.on('connection', (ChattyServerLink) => {
   console.log('Client connected');
+
+  wss.clients.forEach(function each(client) {
+    if (client.readyState === SocketConnector.OPEN) {
+      let users = {
+        type: 'clients',
+        numberOfUsers: wss.clients.size
+      }
+      client.send(JSON.stringify(users));
+    }
+  })
+  
   ChattyServerLink.on('message', (message) => {
     let msg = JSON.parse(message)
     msg.id = uuidv4();
@@ -28,6 +39,8 @@ wss.on('connection', (ChattyServerLink) => {
         msg.type = 'incomingNotification';
       break;
     }
+
+
 
 
     wss.clients.forEach((client) => {
