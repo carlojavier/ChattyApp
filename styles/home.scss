@@ -8,6 +8,13 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   margin: 70px 0;
+  padding-top: 50px;
+
+  .notificationContent {
+    font-style: italic;
+    padding: 5px;
+    
+  }
 }
 
 .chatbar {
@@ -68,20 +75,23 @@ body {
 .navbar {
   background: red;
   border-bottom: 1px solid black;
-  height: 60px;
+  height: 100px;
   left: 0;
   padding: 0 10px;
+  padding-left: 4em;
+  padding-right: 4em;
   position: fixed;
   right: 0;
   top: 0;
 
   .navbar-brand {
+    margin-top: 15px;
     font-style: italic;
     color: white;
     display: block;
     float: left;
-    font-weight: 900;
-    font-size: 36px;
+    font-weight: bolder;
+    font-size: 54px;
     height: 60px;
     line-height: 60px;
     padding: 0 10px;
@@ -90,7 +100,7 @@ body {
   }
 
   .userCounter {
-    margin-top: 20px;
+    margin-top: 40px;
     color: white;
     font-style: italic;
     font-weight: 700;

@@ -9,7 +9,8 @@ function MessageList(props) {
                 key={message.id}
                 username={message.username}
                 oldusername={message.oldusername}
-                content={message.content} />
+                content={message.content}
+                colour ={message.colour} />
         );
     });
     return <main className="messages">{messages}</main>

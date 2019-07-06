@@ -40,9 +40,6 @@ wss.on('connection', (ChattyServerLink) => {
       break;
     }
 
-
-
-
     wss.clients.forEach((client) => {
       if(client.readyState === SocketConnector.OPEN) {
         client.send(JSON.stringify(msg))
