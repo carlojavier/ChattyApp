@@ -49,6 +49,5 @@ wss.on('connection', (ChattyServerLink) => {
     });
     console.log('received: %s', message);
   })
-  // Set up a callback for when a client closes the socket. This usually means they closed their browser.
   ChattyServerLink.on('close', () => console.log('Client disconnected'));
 });

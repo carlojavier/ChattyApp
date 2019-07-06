@@ -3,7 +3,6 @@ import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 
-// colours to access
 const colours = [
   '#FF0000',
   '#0000FF',
