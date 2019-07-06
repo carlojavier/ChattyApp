@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 function Message({ type, username, content, oldusername, colour }) {
     if (type === 'incomingMessage') {
-    return (
-        <div className="message">
-            <span className="message-username" style={{ color: colour }}>{username}</span>
-            <span className="message-content">{content}</span>
-        </div>
+        return (
+            <div className="message">
+                <span className="message-username" style={{ color: colour }}>{username}</span>
+                <span className="message-content">{content}</span>
+            </div>
         )
     } else if (type === 'incomingNotification') {
         return (
@@ -14,9 +14,17 @@ function Message({ type, username, content, oldusername, colour }) {
                 <span className='notificationContent'>*{oldusername} changed their name to {username}*</span>
             </div>
 
-        );   
-}
-return null;
+        );
+    } else if (type === 'incomingImage') {
+        return (
+            <div className="notification">
+                <span className='notificationContent'>*{username} sent a photo!*</span>
+                <img src={content} className='userImages'></img>
+            </div>
+
+        );
+    }
+    return null;
 
 }
 

@@ -39,6 +39,7 @@ class App extends Component {
       switch (msg.type) {
         case 'incomingMessage':
         case 'incomingNotification':
+        case 'incomingImage':
           this.addMessages(msg);
           break;
 

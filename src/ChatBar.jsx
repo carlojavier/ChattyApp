@@ -29,23 +29,34 @@ export default class ChatBar extends Component {
     changeUserName(event) {
 
     }
-    
+
     postMessage(event) {
+        let newMessage;
+        const validateURL = new RegExp('(https:?//)?(www.)?.+.(png|jpe?g|gif)');
         if (event.key === 'Enter') {
-            const newMessage = {
-                'id': this.state.id,
-                'type': 'postMessage',
-                'username': this.state.userName,
-                'content': this.state.message
-            };
+            if (validateURL.test(this.state.message)) {
+                newMessage = {
+                    'id': this.state.id,
+                    'type': 'postImage',
+                    'username': this.state.userName,
+                    'content': this.state.message
+                };
+            } else {
+                newMessage = {
+                    'id': this.state.id,
+                    'type': 'postMessage',
+                    'username': this.state.userName,
+                    'content': this.state.message
+                };
+            }
             event.target.value = '',
-            this.setState({
-                message: ''
-            });
+                this.setState({
+                    message: ''
+                });
             this.props.sendMessage(newMessage);
         }
     }
-    
+
     postNotification(event) {
         const notification = {
             'id': this.state.id,

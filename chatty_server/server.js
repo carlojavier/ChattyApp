@@ -15,7 +15,6 @@ const wss = new SocketServer({ server });
 
 
 wss.on('connection', (ChattyServerLink) => {
-  console.log('Client connected');
 
   wss.clients.forEach(function each(client) {
     if (client.readyState === SocketConnector.OPEN) {
@@ -37,6 +36,9 @@ wss.on('connection', (ChattyServerLink) => {
       break;
       case 'postNotification':
         msg.type = 'incomingNotification';
+      break;
+      case 'postImage':
+        msg.type = 'incomingImage';
       break;
     }
 
