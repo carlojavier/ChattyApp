@@ -1,4 +1,4 @@
-#CHATTY APP
+# CHATTY APP
 
 Chatty is a full stack web application built primarily with React, Web Socket technology, and Express.
 
