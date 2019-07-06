@@ -14,9 +14,7 @@ open http://localhost:3000
 
 ## Final Project
 
-!["Screenshot Description"](URL)
-!["Screenshot Description"](URL)
-!["Screenshot Description"](URL)
+!["Display interface, message input system, change username colour, and sending images feature"](https://github.com/carlojavier/ChattyApp/blob/master/screenshots/chatty_screenshot.png?raw=true)
 
 
 ### Dependencies
@@ -25,3 +23,10 @@ open http://localhost:3000
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+* Express
+* WebSockets
+* React-DOM
+* UUID
+* CSS-loader
+* node-sass
+* sass-loader
