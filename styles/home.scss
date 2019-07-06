@@ -80,7 +80,7 @@ body {
     color: white;
     display: block;
     float: left;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 36px;
     height: 60px;
     line-height: 60px;
@@ -90,11 +90,13 @@ body {
   }
 
   .userCounter {
+    margin-top: 20px;
     color: white;
+    font-style: italic;
+    font-weight: 700;
     float: right;
     text-align: right;
     font-size: large;
-    color: black;
   
   }
 }
